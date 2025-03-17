@@ -1,0 +1,104 @@
+.nav_text {
+    font-size: 16px;
+    color: #2C5E3A !important; /* Deep Green */
+    width: 120px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav_text:hover {
+    padding-top: 6px;
+    font-size: 18px;
+    color: #A3D9A5 !important; /* Soft Green */
+    font-weight: bold;
+}
+
+/* Active Nav Item */
+.active {
+    padding-top: 6px !important;
+    font-size: 18px;
+    color: #4A8B5F !important; /* Medium Green */
+    font-weight: bold;
+}
+
+/* Dropdown */
+.drop {
+    width: 120px;
+}
+
+.drop:hover .nav_text {
+    color: #A3D9A5 !important; /* Soft Green */
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Logo */
+.logo {
+    color: #4A8B5F !important; /* Medium Green */
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Image */
+.logo img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsive Logo Adjustments */
+@media (max-width: 768px) {
+    .logo img {
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo img {
+        height: 40px;
+    }
+}
+
+/* Dropdown Text */
+.dropdownText {
+    text-decoration: none;
+    color: #2C5E3A; /* Deep Green */
+    transition: color 0.3s ease-in-out;
+}
+
+.dropdownItem:hover .dropdownText {
+    color: #A3D9A5; /* Soft Green */
+}
+
+.drop a:hover {
+    background-color: white;
+}
+
+/* Responsive Navigation */
+@media screen and (max-width: 991px) {
+    .dropdownItem {
+        text-align: center !important;
+    }
+    
+    .nav_text {
+        width: auto;
+        padding-top: 0px;
+    }
+    
+    .drop {
+        width: auto;
+    }
+    
+    .logo {
+        font-size: 35px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        font-size: 25px !important;
+    }
+}

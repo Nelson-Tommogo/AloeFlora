@@ -1,0 +1,92 @@
+/* Main container styling */
+.contain {
+    margin-top: 130px;
+    margin-bottom: 130px;
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+    background-color: #F4F9F4; /* Light green for freshness */
+    border-radius: 10px;
+}
+
+/* Main Heading */
+.heading {
+    font-size: 30px;
+    color: #3A7D44 !important; /* Deep Green */
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Subheading */
+.subHeading {
+    font-size: 34px;
+    font-weight: bold;
+    color: #3c685d; /* Dark Grayish Blue */
+    width: 645px;
+    text-align: center;
+    margin: auto;
+}
+
+/* Service Card Styling */
+.serviceCard {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #E8F5E9; /* Slightly darker green */
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: white;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* New Cool Hover Effect */
+.serviceCard:hover {
+    transform: translateY(-5px);
+    background-color: #E0F2E9; /* Soft pastel green */
+    box-shadow: 0px 4px 15px rgba(58, 125, 68, 0.2); /* Subtle green glow */
+}
+
+/* Service Link */
+.link {
+    color: #3A7D44 !important; /* Deep Green */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.link:hover {
+    color: #1B5E20 !important; /* Darker natural green */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .contain {
+        margin-top: 80px;
+        margin-bottom: 80px;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .subHeading {
+        font-size: 25px;
+        width: auto;
+    }
+    .heading {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .subHeading {
+        font-size: 20px;
+    }
+    .heading {
+        font-size: 18px;
+    }
+    .contain {
+        margin-top: 80px;
+        margin-bottom: 100px;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}

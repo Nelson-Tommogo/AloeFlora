@@ -1,0 +1,144 @@
+/* ✅ Main Background - Light Green */
+.mainContainer {
+    background: #F4F9F4; /* Light green for freshness */
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+/* ✅ Testimonial Box */
+.box {
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background 0.3s;
+    border: 2px solid #3A7D44; /* Deep Green */
+}
+
+.box:hover {
+    background-color: #E8F5E9; /* Slightly darker green */
+    transform: scale(1.05);
+}
+
+/* ✅ Headings */
+.head {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: #3A7D44 !important; /* Deep Green */
+}
+
+.subHead {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #2C3E50; /* Dark Grayish Blue */
+    margin-bottom: 40px;
+}
+
+/* ✅ Image Styling */
+.img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ✅ Name and Profession */
+.name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2C3E50; /* Dark Grayish Blue */
+}
+
+.profession {
+    font-size: 16px;
+    color: #3A7D44; /* Deep Green */
+    font-style: italic;
+}
+
+/* ✅ Message Styling */
+.msg {
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+    padding-top: 10px;
+}
+
+/* ✅ Custom Arrows */
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.arrow {
+    background-color: #3A7D44; /* Deep Green */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.arrow:hover {
+    background-color: #E8F5E9; /* Light Green on Hover */
+    color: #3A7D44;
+}
+
+/* ✅ Carousel Dots - Fresh Green */
+.react-multi-carousel-dot > button {
+    background-color: #A7D7A7 !important; /* Soft green */
+    border: 0px !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50%;
+    transition: background 0.3s ease-in-out;
+}
+
+.react-multi-carousel-dot--active > button {
+    background-color: #3A7D44 !important; /* Deep Green */
+}
+
+
+/* ✅ Responsive Design */
+@media screen and (max-width: 810px) {
+    .head {
+        font-size: 25px;
+    }
+    .subHead {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    .container {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    .msg {
+        padding-top: 10px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .name, .profession {
+        text-align: center;
+    }
+    .msg {
+        text-align: justify;
+    }
+}

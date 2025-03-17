@@ -1,0 +1,131 @@
+.logo {
+    font-size: 40px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #ffffff !important;
+    text-align: left;
+}
+
+.contain {
+    position: relative;
+}
+
+.text {
+    color: #ffffff;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.head {
+    color: #ffffff;
+    font-size: 22px;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 28px;
+    font-weight: 500;
+}
+
+/* Footer Background */
+.footer {
+    background-color: #1f4d25; /* Deep Green */
+    padding-top: 89px;
+    padding-bottom: 90px;
+}
+
+.bottom {
+    background-color: #4caf50; /* Medium Green */
+    border-top: solid 1px #81c784; /* Light Green Border */
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 0px;
+    height: 49px;
+    padding-top: 12px;
+    text-align: center;
+}
+
+/* Newsletter Section */
+.newsletterContainer {
+    position: relative;
+    background-color: #4caf50; /* Medium Green */
+    padding: 40px;
+    margin: 0 auto;
+    margin-bottom: -50px; /* Overlap the footer */
+    width: 70%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.newsletterText {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.newsletterInputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletterInput {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    width: 50%;
+    outline: none;
+}
+
+.subscribeButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1f4d25; /* Dark Green */
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.subscribeButton:hover {
+    background-color: #81c784; /* Light Green */
+}
+
+/* Social Icons */
+.icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+    .newsletterInput {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .contain {
+        padding-left: 30% !important;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .contain {
+        padding-left: 20% !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .contain {
+        padding-left: 10% !important;
+    }
+    .text {
+        width: 100%;
+    }
+}

@@ -1,0 +1,216 @@
+.payment-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F2F8F3; /* Light greenish background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.payment-form .form-group {
+    margin-bottom: 15px;
+}
+
+.payment-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #3A7D44; /* Deep green for text */
+}
+
+.payment-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #3A7D44; /* Green border */
+    border-radius: 5px;
+    background-color: #EAF4EA; /* Light green input background */
+    color: #2C3E50; /* Dark text for readability */
+}
+
+.payment-form input:focus {
+    border-color: #2D6A4F; /* Slightly darker green on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(45, 106, 79, 0.5);
+}
+
+/* Buttons */
+.live-location-btn, .submit-payment-btn, .track-btn {
+    background-color: #3A7D44; /* Primary Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.live-location-btn.active {
+    background-color: #2D6A4F; /* Darker Green when active */
+}
+
+.live-location-btn:hover, .submit-payment-btn:hover, .track-btn:hover {
+    background-color: #2A6E47; /* Slightly darker green on hover */
+}
+
+/* Delivery Info */
+.delivery-info {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: #2C3E50;
+}
+
+.icon {
+    margin-right: 5px;
+    color: #3A7D44; /* Green icons */
+}
+
+/* Error Messages */
+.error {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+/* Tracking Section */
+.tracking-section {
+    margin-top: 20px;
+}
+
+.track-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+/* Screens up to 760px */
+@media (max-width: 760px) {
+    .payment-container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .payment-form input {
+        padding: 9px;
+    }
+
+    .live-location-btn, .submit-payment-btn, .track-btn {
+        padding: 9px 18px;
+        font-size: 16px;
+    }
+
+    .payment-form label {
+        font-size: 16px;
+    }
+
+    .delivery-info {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .tracking-section input {
+        padding: 9px;
+    }
+
+    .track-btn {
+        padding: 9px;
+    }
+}
+
+/* Screens up to 500px */
+@media (max-width: 500px) {
+    .payment-container {
+        padding: 12px;
+    }
+
+    .payment-form input {
+        padding: 8px;
+    }
+
+    .live-location-btn, .submit-payment-btn, .track-btn {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+
+    .payment-form label {
+        font-size: 15px;
+    }
+
+    .delivery-info {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .tracking-section input {
+        padding: 8px;
+    }
+
+    .track-btn {
+        padding: 8px;
+    }
+}
+
+/* Screens up to 330px */
+@media (max-width: 330px) {
+    .payment-container {
+        padding: 10px;
+        max-width: 85%;
+    }
+
+    .payment-form input {
+        padding: 8px;
+    }
+
+    .live-location-btn, .submit-payment-btn, .track-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .payment-form label {
+        font-size: 14px;
+    }
+
+    .delivery-info {
+        font-size: 14px;
+    }
+
+    .error-message {
+        font-size: 11px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .tracking-section input {
+        padding: 8px;
+    }
+
+    .track-btn {
+        padding: 8px;
+    }
+}

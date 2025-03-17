@@ -1,0 +1,94 @@
+.contain {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Main Heading */
+.mainHead {
+    font-family: 'Poppins', sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: #3A7D44; /* Aloe Flora Deep Green */
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Main Content */
+.mainContent {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #2C3E50; /* Dark Grayish Blue */
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+/* Content Box */
+.box {
+    background-color: rgba(58, 125, 68, 0.1); /* Soft Aloe Green Tint */
+    border: solid 2px rgba(58, 125, 68, 0.5);
+    border-radius: 10px;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+/* Subheading */
+.head {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3A7D44; /* Aloe Green */
+    margin-bottom: 20px;
+}
+
+/* Content Text */
+.content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #2C3E50; /* Dark Grayish Blue */
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .mainHead {
+        font-size: 35px;
+    }
+    .mainContent {
+        font-size: 18px;
+        padding-bottom: 60px;
+    }
+    .box {
+        padding: 30px 20px;
+    }
+    .head {
+        font-size: 20px;
+    }
+    .content {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .contain {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .mainHead {
+        font-size: 28px;
+    }
+    .mainContent {
+        font-size: 16px;
+    }
+    .head {
+        font-size: 18px;
+    }
+    .content {
+        font-size: 15px;
+    }
+}

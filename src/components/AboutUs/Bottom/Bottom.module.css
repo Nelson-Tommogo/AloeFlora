@@ -1,0 +1,87 @@
+.contain {
+    padding-bottom: 130px;
+}
+
+.row {
+    margin-top: 130px !important;
+}
+
+.card {
+    background-color: #F2F8F3; /* Light greenish background for freshness */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Slightly scale the card on hover */
+}
+
+/* Heading */
+.head, .head1 {
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: bold;
+    color: #3A7D44; /* Deep Green for headings */
+    margin: 0 0 10px; /* Adjust margins */
+}
+
+/* Content */
+.content, .content1 {
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: #2C3E50; /* Dark Grayish Blue for readability */
+    opacity: 0.8; /* Slightly better contrast */
+}
+
+/* Image Container */
+.imgContainer {
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Padding around the image */
+}
+
+.img, .img1 {
+    width: 70%;
+    height: auto;
+    display: block; /* Block element for centering */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .head, .head1 {
+        margin-top: 20px; /* Reduced margin for smaller screens */
+    }
+
+    .content, .content1 {
+        margin: 0; /* Remove margins */
+    }
+
+    .img, .img1 {
+        width: 60%; /* Adjust image width */
+    }
+
+    .row {
+        margin-top: 80px !important;
+    }
+
+    .contain {
+        padding-bottom: 80px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .img, .img1 {
+        width: 50%; 
+    }
+
+    .head, .head1 {
+        font-size: 22px;
+    }
+
+    .row {
+        margin-top: 50px !important;
+    }
+}

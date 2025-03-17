@@ -1,0 +1,127 @@
+.contain {
+    padding: 20px 0;
+    margin-bottom: 150px;
+    background-color: #F4F9F4; /* Light green for freshness */
+}
+
+/* Heading Styles */
+.head {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #3A7D44; /* Deep green */
+    margin-bottom: 13px;
+    text-align: center;
+}
+
+.our {
+    display: inline;
+    font-size: 34px;
+    font-weight: bold;
+    color: #2C3E50; /* Dark grayish blue */
+}
+
+.study {
+    display: inline;
+    font-size: 34px;
+    font-weight: bold;
+    color: #3A7D44; /* Deep green */
+}
+
+/* Category Filter Buttons */
+.grp_btn {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.filter {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #2C3E50; /* Dark grayish blue */
+    font-weight: 500;
+    background: #F4F9F4; /* Light green background */
+    border: 2px solid #3A7D44; /* Deep green border */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.filter:hover {
+    background-color: #E8F5E9; /* Slightly darker green */
+    color: #3A7D44;
+    font-weight: bold;
+}
+
+/* Active Category */
+.active {
+    font-weight: bold;
+    background-color: #3A7D44;
+    color: #FFF;
+}
+
+/* Product Image Styles */
+.img {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transition: transform 0.3s, box-shadow 0.3s ease;
+    box-shadow: 0 3px 10px rgba(58, 125, 68, 0.15);
+}
+
+.img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(58, 125, 68, 0.3);
+}
+
+/* Image Title */
+.imgTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(44, 62, 80, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 992px) {
+    .head {
+        font-size: 25px;
+    }
+    .our, .study {
+        font-size: 30px;
+    }
+    .filter {
+        font-size: 18px;
+    }
+    .grp_btn {
+        margin: 30px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .head {
+        font-size: 20px;
+    }
+    .our, .study {
+        font-size: 24px;
+    }
+    .filter {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    .grp_btn {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

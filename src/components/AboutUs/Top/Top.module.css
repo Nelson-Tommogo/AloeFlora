@@ -1,0 +1,92 @@
+/* General Styling */
+.heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #3A7D44; /* Deep Green */
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.subHeading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: #2C3E50; /* Dark Grayish Blue */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Section Styling */
+.section {
+    background-color: #F4F9F4; /* Light green for freshness */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Core Values Styling */
+.valuesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Cards for Core Values */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card h3 {
+    font-size: 20px;
+    color: #3A7D44; /* Deep Green */
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .heading {
+        font-size: 26px;
+        margin-top: 50px;
+    }
+    .subHeading {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .valuesContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .heading {
+        font-size: 22px;
+        margin-top: 40px;
+    }
+    .subHeading {
+        font-size: 20px;
+    }
+}

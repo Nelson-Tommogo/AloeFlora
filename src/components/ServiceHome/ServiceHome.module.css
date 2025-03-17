@@ -1,0 +1,68 @@
+.box {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 75px 10px 60px;
+    margin-top: 24px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #F4F9F4; /* Light Green Background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.box:hover {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, 
+                rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    transform: scale(1.05);
+    background-color: #DAEAD8; /* Very Light, Quiet Green */
+}
+
+.heading {
+    font-size: 24px;
+    color: #2C3E50; /* Dark Grayish Blue */
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.text {
+    font-size: 18px;
+    color: #3A7D44; /* Deep Green */
+    margin: 0 auto;
+    text-align: center;
+    max-width: 90%;
+}
+
+.form-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #E8F5E9; /* Slightly Darker Green */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container input, 
+.form-container select, 
+.form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #3A7D44; /* Deep Green Border */
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #F4F9F4; /* Light Green */
+    color: #2C3E50; /* Dark Grayish Blue */
+}
+
+.form-container button {
+    background-color: #3A7D44; /* Deep Green Button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #A9D3A5; /* Soft Muted Green for a Calm Hover */
+}

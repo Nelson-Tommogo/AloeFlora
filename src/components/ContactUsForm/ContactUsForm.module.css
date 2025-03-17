@@ -1,0 +1,187 @@
+/* General Container Styling */
+.contain {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f5f8fa; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250%; /* Increased width */
+    max-width: 1200px; /* Increased max-width */
+}
+
+
+/* Heading Styles */
+.heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: #006400; /* Dark green */
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.head {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #228B22; /* Forest green */
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #333333;
+    opacity: 0.8;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.email {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    color: #006400; /* Dark green */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Form Styling */
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #2E8B57; /* Sea green */
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+}
+
+.input {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: solid 1px #8FBC8F; /* Dark sea green */
+    height: 50px;
+    padding-left: 15px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.input:focus {
+    outline: none;
+    border: solid 1px #006400; /* Dark green */
+    box-shadow: 0px 0px 5px rgba(0, 100, 0, 0.3);
+}
+
+/* Message Box */
+.msg {
+    height: 150px !important;
+    padding-top: 15px;
+    resize: vertical;
+}
+
+.greenButton {
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    width: 180px;
+    border-radius: 5px;
+    background-color: #006400; /* Dark Green */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.greenButton:hover {
+    background-color: #004d00; /* Darker Green on Hover */
+}
+
+
+/* Submit Button */
+.btn {
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    width: 180px;
+    border-radius: 5px !important;
+    background-color: #228B22; /* Forest green */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #006400; /* Dark green */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .heading {
+        font-size: 35px;
+    }
+    .head {
+        font-size: 18px;
+    }
+    .content {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .heading {
+        font-size: 28px;
+    }
+    .head {
+        font-size: 16px;
+    }
+    .input {
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .heading {
+        font-size: 24px;
+    }
+    .head {
+        font-size: 14px;
+    }
+    .content {
+        font-size: 14px;
+    }
+    .label {
+        font-size: 14px;
+    }
+    .input {
+        height: 40px;
+        font-size: 14px;
+    }
+    .msg {
+        height: 120px;
+    }
+    .btn {
+        font-size: 14px;
+        height: 45px;
+        width: 160px;
+    }
+}
