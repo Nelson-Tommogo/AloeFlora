@@ -12,16 +12,71 @@ import handwash from '../../assets/handwash.jpeg';
 import hairtreatment from '../../assets/_MG_9328.jpg'; 
 
 const products = [
-  { id: 1, name: 'Hand wash', description: '500ml', image: handwash, price: 150, category: 'Skincare & Bodycare' },
-  { id: 2, name: 'shampoo', description: '500ml', image: shampoo, price: 250, category: 'Skincare & Bodycare' },
-  { id: 4, name: 'Hair Treatment', description: '500ml', image: hairtreatment, price: 250, category: 'Skincare & Bodycare' },
-  { id: 7, name: 'Shower Gel', description: '500ml', image: showergel, price: 350, category: 'Skincare & Bodycare' },
-  { id: 8, name: 'Air Conditioner', description: '500ml', image: airconditioner, price: 350, category: 'Cleaning & Hygiene' },
-  { id: 9, name: 'Body lotion', description: '400ml', image: lotion, price: 300, category: 'Skincare & Bodycare' },
-  { id: 10, name: 'Toilet cleaner', description: '750ml', image: toiletcleaner, price: 500, category: 'Cleaning & Hygiene' },
-  { id: 12, name: 'Handwash Soap', description: '500ml', image: handwashsaop, price: 150, category: 'Cleaning & Hygiene' },
+  { 
+    id: 1, 
+    name: 'Aloe Hand Wash', 
+    description: '500ml pH-balanced with aloe vera - Removes 99.9% bacteria - Non-drying formula',
+    image: handwash, 
+    price: 150, 
+    category: 'Skincare & Bodycare' 
+  },
+  { 
+    id: 2, 
+    name: 'Aloe Shampoo', 
+    description: '500ml sulfate-free - Aloe & coconut oil - Reduces hair breakage',
+    image: shampoo, 
+    price: 250, 
+    category: 'Skincare & Bodycare' 
+  },
+  { 
+    id: 4, 
+    name: 'Aloe Hair Treatment', 
+    description: '500ml repair mask - Aloe & keratin - Restores shine & elasticity',
+    image: hairtreatment, 
+    price: 250, 
+    category: 'Skincare & Bodycare' 
+  },
+  { 
+    id: 7, 
+    name: 'Aloe Shower Gel', 
+    description: '500ml moisturizing wash - Aloe & vitamin E - Maintains moisture barrier',
+    image: showergel, 
+    price: 350, 
+    category: 'Skincare & Bodycare' 
+  },
+  { 
+    id: 8, 
+    name: 'AC Cleaning Solution', 
+    description: '500ml specialized formula - Removes allergens - Prevents microbial growth',
+    image: airconditioner, 
+    price: 350, 
+    category: 'Cleaning & Hygiene' 
+  },
+  { 
+    id: 9, 
+    name: 'Aloe Body Lotion', 
+    description: '400ml fast-absorbing - Aloe & shea butter - 24h hydration',
+    image: lotion, 
+    price: 300, 
+    category: 'Skincare & Bodycare' 
+  },
+  { 
+    id: 10, 
+    name: 'Aloe Toilet Cleaner', 
+    description: '750ml powerful disinfectant - Citrus extracts - Eliminates stains & odors',
+    image: toiletcleaner, 
+    price: 500, 
+    category: 'Cleaning & Hygiene' 
+  },
+  { 
+    id: 12, 
+    name: 'Antibacterial Hand Soap', 
+    description: '500ml foaming soap - Tea tree oil - Maintains skin pH balance',
+    image: handwashsaop, 
+    price: 150, 
+    category: 'Cleaning & Hygiene' 
+  },
 ];
-
 const Shop = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);

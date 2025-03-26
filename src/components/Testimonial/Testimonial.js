@@ -3,7 +3,7 @@ import "./style.css";
 import styles from "./Testimonial.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { fakeData } from "./fakeData";
+import { fakeData } from "./testimonialdata";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function Testimonial() {

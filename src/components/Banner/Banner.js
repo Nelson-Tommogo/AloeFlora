@@ -7,16 +7,30 @@ import styles from "./Banner.module.css";
 
 const images = [
   {
-    src: require("../../assets/_MG_93220.jpg"),
-    alt: "Image 1",
-    text: "Embrace the Essence of Aloe Flora Limited",
-    buttonLabel: "SHOP NOW",
+    src: require("../../assets/_MG_9273.jpg"),
+    alt: "Toilet Cleaner",
+    text: "Powerful Yet Gentle Toilet Care",
+    buttonLabel: "CLEANER",
+    buttonLink: "/shop"
+  },
+  {
+    src: require("../../assets/_MG_9326.jpg"),
+    alt: "Image 2",
+    text: "AloeFlora Essentials: Pure Nature, Premium Care",
+    buttonLabel: "COLLECTIONS",
     buttonLink: "/Shop",
   },
   {
-    src: require("../../assets/_MG_9273.jpg"),
+    src: require("../../assets/_MG_9204.jpg"),
     alt: "Image 2",
     text: "Nature’s Best for Your Skin & Wellness",
+    buttonLabel: "COLLECTIONS",
+    buttonLink: "/Shop",
+  },
+  {
+    src: require("../../assets/_MG_9332.jpg"),
+    alt: "Image 2",
+    text: "Instant Relief for Skin & Scalp",
     buttonLabel: "COLLECTIONS",
     buttonLink: "/Shop",
   },

@@ -1,6 +1,5 @@
 import Home from "../views/home";
 import ContactUs from '../views/contactUs';
-import IndividualService from "../views/individualService";
 import AboutUs from '../views/aboutUs';
 import Payment from '../components/Shop/Payment';
 import Team from "../components/Team/Team";
@@ -18,10 +17,7 @@ const routes = [
     component: ContactUs,
     to: '/contactUs'
   },
-  {
-    component: IndividualService,
-    to: '/individualService'
-  },
+
   {
     component: AboutUs,
     to: '/aboutUs'

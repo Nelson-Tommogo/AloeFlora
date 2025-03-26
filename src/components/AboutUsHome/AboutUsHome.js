@@ -54,27 +54,27 @@ const AboutUsHome = () => {
                         { 
                             img: Airconditioner, 
                             title: "Air Conditioner",
-                            price: "Ksh 150",
-                            description: "Powerful, plant-based bleach for deep cleaning and stain removal."
-                        },
-                        { 
+                            price: "Ksh 350",
+                            description: "Specialized formula for AC maintenance - Removes dust & allergens - Prevents microbial growth"
+                          },
+                          { 
                             img: lotion, 
                             title: "Body Lotion (400ml)", 
                             price: "Ksh 300",
-                            description: "Moisturizing lotion enriched with aloe vera for soft, hydrated skin."
-                        },
-                        { 
+                            description: "Fast-absorbing hydration - Aloe vera & shea butter - 24-hour moisturization"
+                          },
+                          { 
                             img: TolietCleaner, 
-                            title: "Toilet Cleaner", 
-                            price: "Ksh 600",
-                            description: "Effective for cleaning floors, dishes, and more."
-                        },
-                        { 
+                            title: "Toilet Cleaner (750ml)", 
+                            price: "Ksh 500",
+                            description: "Powerful disinfectant - Eliminates limescale & odors - Citrus extract formula"
+                          },
+                          { 
                             img: showergel, 
                             title: "Shower Gel", 
-                            price: "Ksh 150",
-                            description: "Gentle foaming hand wash with soothing aloe and essential oils."
-                        },
+                            price: "Ksh 350",
+                            description: "Moisturizing body wash - Vitamin E enriched - Maintains skin's natural pH"
+                          }
                 
                     ].map((product, index) => (
                         <div key={index} className={styles.productCard}>
