@@ -3,7 +3,7 @@
 @import '~slick-carousel/slick/slick-theme.css';
 
 .bannerContainer {
-    height: 94vh;
+    height: 84vh;
     position: relative;
     overflow: hidden;
 }
@@ -11,32 +11,32 @@
 .slide {
     position: relative;
     width: 100%;
-    height: 94vh;
+    height: 70vh; /* Reduced from 94vh */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
-/* Ensures all images have the same size */
 .slideImage {
     width: 100%;
-    height: 94vh;
-    object-fit: cover;  /* Ensures uniformity without distortion */
+    height: 100%;
+    object-fit: cover;
+    transform: scale(0.85); /* Zoom out effect */
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Text & Button Overlay (Inside Image) */
 .overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.9); /* Scale down overlay */
     text-align: center;
     background: rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    border-radius: 15px;
+    padding: 15px;
+    border-radius: 12px;
     width: 80%;
-    max-width: 600px;
+    max-width: 500px;
 }
 
 .text {
@@ -69,29 +69,27 @@
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1024px) {
-    .text {
-        font-size: 40px;
+@media screen and (max-width: 768px) {
+    .slideImage {
+        transform: scale(0.95);
     }
-    .btn {
-        width: 220px;
-        height: 55px;
+    
+    .overlay {
+        transform: translate(-50%, -50%) scale(0.85);
     }
 }
 
+
 @media screen and (max-width: 768px) {
+    .slideImage {
+        transform: scale(0.95);
+    }
+    
     .overlay {
-        width: 90%;
-        padding: 15px;
-    }
-    .text {
-        font-size: 30px;
-    }
-    .btn {
-        width: 200px;
-        height: 50px;
+        transform: translate(-50%, -50%) scale(0.85);
     }
 }
+
 
 @media screen and (max-width: 576px) {
     .text {

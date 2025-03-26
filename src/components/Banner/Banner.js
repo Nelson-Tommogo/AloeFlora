@@ -7,14 +7,14 @@ import styles from "./Banner.module.css";
 
 const images = [
   {
-    src: require("../../assets/4.jpg"),
+    src: require("../../assets/_MG_93220.jpg"),
     alt: "Image 1",
     text: "Embrace the Essence of Aloe Flora Limited",
     buttonLabel: "SHOP NOW",
     buttonLink: "/Shop",
   },
   {
-    src: require("../../assets/om.jpeg"),
+    src: require("../../assets/_MG_9273.jpg"),
     alt: "Image 2",
     text: "Nature’s Best for Your Skin & Wellness",
     buttonLabel: "COLLECTIONS",

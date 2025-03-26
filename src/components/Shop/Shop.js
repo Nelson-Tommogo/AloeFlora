@@ -2,34 +2,25 @@ import React, { useState } from 'react';
 import './Shop.css';
 import { FaSearch, FaShoppingCart, FaTrashAlt, FaTimes } from 'react-icons/fa';
 import Footer from "../Footer";
-import airconditioner from '../../assets/airconditioner.jpeg';
-import bleach from '../../assets/bleach.jpeg'; 
-import disinfectant from '../../assets/disinfectant.jpeg'; 
-import multipurposesoap from '../../assets/multipurposesoap.jpeg'; 
+import airconditioner from '../../assets/_MG_9314.png';
 import handwashsaop from '../../assets/handwashsaop.jpeg';
-import toiletcleaner from '../../assets/toiletcleaner.jpeg'; 
-import lotion from '../../assets/lotion.jpeg'; 
-import showergel from '../../assets/showergel.jpeg'; 
+import toiletcleaner from '../../assets/toiletcleaner.jpg'; 
+import lotion from '../../assets/lotion.png'; 
+import shampoo from '../../assets/_MG_9316.jpg'; 
+import showergel from '../../assets/_MG_9304.jpg'; 
 import handwash from '../../assets/handwash.jpeg'; 
-import handwashsoaps from '../../assets/handwashsoaps.jpeg'; 
-
+import hairtreatment from '../../assets/_MG_9328.jpg'; 
 
 const products = [
-  { id: 1, name: 'Hand wash', description: '500ml', image: handwash, price: 150 },
-  { id: 2, name: 'Hair shampoo', description: '500ml', image: showergel, price: 250 },
-  { id: 3, name: 'Hair conditioner', description: '500ml', image: lotion, price: 300 },
-  { id: 4, name: 'Leave in Treatment', description: '500ml', image: handwashsoaps, price: 350 },
-  { id: 5, name: 'Multipurpose liquid soap', description: '5 ltrs', image: multipurposesoap, price: 600 },
-  { id: 6, name: 'Multipurpose liquid soap', description: '20 ltrs', image: disinfectant, price: 2500 },
-  { id: 7, name: 'Shower Gel', description: '500ml', image: showergel, price: 350 },
-  { id: 8, name: 'Shower Gel', description: '1ltr', image: airconditioner, price: 600 },
-  { id: 9, name: 'Body lotion', description: '400ml', image: lotion, price: 300 },
-  { id: 10, name: 'Toilet cleaner', description: '750ml', image: toiletcleaner, price: 500 },
-  { id: 11, name: 'Bleach', description: '500ml', image: bleach, price: 150 },
-  { id: 12, name: 'Handwash Soap', description: '500ml', image: handwashsaop, price: 150 },
-
+  { id: 1, name: 'Hand wash', description: '500ml', image: handwash, price: 150, category: 'Skincare & Bodycare' },
+  { id: 2, name: 'shampoo', description: '500ml', image: shampoo, price: 250, category: 'Skincare & Bodycare' },
+  { id: 4, name: 'Hair Treatment', description: '500ml', image: hairtreatment, price: 250, category: 'Skincare & Bodycare' },
+  { id: 7, name: 'Shower Gel', description: '500ml', image: showergel, price: 350, category: 'Skincare & Bodycare' },
+  { id: 8, name: 'Air Conditioner', description: '500ml', image: airconditioner, price: 350, category: 'Cleaning & Hygiene' },
+  { id: 9, name: 'Body lotion', description: '400ml', image: lotion, price: 300, category: 'Skincare & Bodycare' },
+  { id: 10, name: 'Toilet cleaner', description: '750ml', image: toiletcleaner, price: 500, category: 'Cleaning & Hygiene' },
+  { id: 12, name: 'Handwash Soap', description: '500ml', image: handwashsaop, price: 150, category: 'Cleaning & Hygiene' },
 ];
-
 
 const Shop = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -43,6 +34,7 @@ const Shop = () => {
   const [isLoadingPayment, setIsLoadingPayment] = useState(false);
   const [message, setMessage] = useState('');
   const [sortCriteria, setSortCriteria] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
 
   const addToCart = (product) => {
     const existingProduct = cartItems.find(item => item.id === product.id);
@@ -82,9 +74,11 @@ const Shop = () => {
   };
 
   const applyFilterAndSort = (products) => {
-    const filteredProducts = products.filter(product =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    let filteredProducts = products.filter(product => {
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = filterCategory ? product.category === filterCategory : true;
+      return matchesSearch && matchesCategory;
+    });
 
     if (sortCriteria === 'price-asc') {
       return filteredProducts.sort((a, b) => a.price - b.price);
@@ -99,7 +93,7 @@ const Shop = () => {
       return filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
     }
 
-    return filteredProducts; // If no sorting criteria is selected, return filtered products
+    return filteredProducts;
   };
 
   const sortedAndFilteredProducts = applyFilterAndSort(products);
@@ -193,8 +187,42 @@ const Shop = () => {
             />
             <FaSearch className="search-icon" size={20} />
           </div>
-          <div className="sort-bar">
-            <select value={sortCriteria} onChange={handleSortChange}>
+          <div className="filter-controls">
+            <select
+              value={filterCategory}
+              onChange={(e) => setFilterCategory(e.target.value)}
+              style={{
+                padding: '8px 12px',
+                borderRadius: '20px',
+                border: '2px solid #4CAF50',
+                margin: '0 10px',
+                backgroundColor: '#f8f8f8',
+                color: '#333',
+                fontSize: '14px',
+                cursor: 'pointer',
+                outline: 'none'
+              }}
+            >
+              <option value="">All Categories</option>
+              <option value="Skincare & Bodycare">Skincare & Bodycare</option>
+              <option value="Cleaning & Hygiene">Cleaning & Hygiene</option>
+            </select>
+
+            <select 
+              value={sortCriteria} 
+              onChange={handleSortChange}
+              style={{
+                padding: '8px 12px',
+                borderRadius: '20px',
+                border: '2px solid #4CAF50',
+                margin: '0 10px',
+                backgroundColor: '#f8f8f8',
+                color: '#333',
+                fontSize: '14px',
+                cursor: 'pointer',
+                outline: 'none'
+              }}
+            >
               <option value="">Sort by</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
@@ -308,6 +336,7 @@ const Shop = () => {
       <Footer />
     </>
   );
+  
 };
 
 export default Shop;

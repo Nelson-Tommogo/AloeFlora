@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./AboutUsHome.module.css";
 import { FaHeart } from "react-icons/fa"; // Keep only the love icon
 
-import groupProducts from "../../assets/groupproducts.jpeg";
-import bleach from "../../assets/bleach.jpeg";
-import lotion from "../../assets/lotion.jpeg";
-import disinfectant from "../../assets/disinfectant.jpeg";
-import handwash from "../../assets/handwash.jpeg";
+import groupProducts from "../../assets/_MG_9332.jpg";
+import Airconditioner from "../../assets/_MG_9314.png";
+import lotion from "../../assets/lotion.png";
+import TolietCleaner from "../../assets/_MG_9267.jpg";
+import showergel from "../../assets/_MG_9301.jpg";
 
 const AboutUsHome = () => {
     const navigate = useNavigate();
@@ -52,26 +52,26 @@ const AboutUsHome = () => {
                 <div className={styles.productGrid}>
                     {[
                         { 
-                            img: bleach, 
-                            title: "Aloe Flora Bleach (500ml)", 
+                            img: Airconditioner, 
+                            title: "Air Conditioner",
                             price: "Ksh 150",
                             description: "Powerful, plant-based bleach for deep cleaning and stain removal."
                         },
                         { 
                             img: lotion, 
-                            title: "Hand & Body Lotion (400ml)", 
+                            title: "Body Lotion (400ml)", 
                             price: "Ksh 300",
                             description: "Moisturizing lotion enriched with aloe vera for soft, hydrated skin."
                         },
                         { 
-                            img: disinfectant, 
-                            title: "Multipurpose Liquid Soap (5L)", 
+                            img: TolietCleaner, 
+                            title: "Toilet Cleaner", 
                             price: "Ksh 600",
                             description: "Effective for cleaning floors, dishes, and more."
                         },
                         { 
-                            img: handwash, 
-                            title: "Hand Wash (500ml)", 
+                            img: showergel, 
+                            title: "Shower Gel", 
                             price: "Ksh 150",
                             description: "Gentle foaming hand wash with soothing aloe and essential oils."
                         },

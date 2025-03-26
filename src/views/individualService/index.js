@@ -1,7 +1,7 @@
 import React from "react";
 import SubBanner from '../../components/SubBanner';
 import Footer from "../../components/Footer";
-import bg from '../../assets/subBanner.jpg';
+import bg from '../../assets/_MG_9273.jpg';
 import IndividualService from "../../components/IndividualService";
 
 const individualServices = () => {
