@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './Footer.module.css';
 import { FiChevronDown } from 'react-icons/fi';
-import { FaFacebook, FaInstagram} from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTiktok} from 'react-icons/fa';
 
 const servicesData = [
     { 
@@ -96,6 +96,14 @@ const Footer = () => {
                                 </a>
                                 Instagram
                             </p>
+
+                            <p className={styles.text}>
+                                <a href="https://vm.tiktok.com/ZMBUqLp22/" target="_blank" rel="noopener noreferrer">
+                                    <FaTiktok className={styles.icon} />
+                                </a>
+                                Tiktok
+                            </p>
+
                         </div>
                     </div>
                 </div>
