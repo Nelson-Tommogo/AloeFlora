@@ -4,7 +4,7 @@ import styles from "./Testimonial.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { fakeData } from "./fakeData";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Importing custom icons
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function Testimonial() {
     const responsive = {
@@ -63,13 +63,11 @@ function Testimonial() {
                                 </div>
                                 <div className="col-md-9 col-sm-9">
                                     <p className={styles.name}>{x.name}</p>
-                                    <p className={styles.profession}>
-                                        {x.profession}
-                                    </p>
                                 </div>
                             </div>
                             <div className="row">
-                                <p className={styles.msg}>"{x.message}"</p>
+                                {/* Removed quotes from here */}
+                                <p className={styles.msg}>{x.message}</p>
                             </div>
                         </div>
                     ))}
@@ -79,7 +77,6 @@ function Testimonial() {
     );
 }
 
-// ✅ Custom Navigation Arrows
 const ButtonGroup = ({ next, previous }) => {
     return (
         <div className={styles.buttonGroup}>

@@ -1,47 +1,35 @@
-import image5 from '../../assets/home/kebs.jpeg';
 const defaultImageURL = "https://via.placeholder.com/150";
 
 export const fakeData = [
+   
     {
         id: 1,
-        img: image5,
-        name: 'KEBS',
-        profession: 'Kenya Bureau of Standards',
-        message: "We officially certified AloeForA products for quality and safety. Their aloe-based solutions are highly effective and meet regulatory standards."
+        img: defaultImageURL,
+        name: 'Mary Njeri',
+        message: "I've been using the Aloe Vera Moisturizer daily for 3 months - it's the only product that keeps my dry skin hydrated all day without feeling greasy!"
     },
     {
         id: 2,
-        img: defaultImageURL,
-        name: 'Mary Njeri',
-        profession: 'Skincare Enthusiast',
-        message: "AloeForA's aloe vera moisturizer has transformed my skin! It’s hydrating, soothing, and 100% natural. My skin has never felt better."
+        img: defaultImageURL, 
+        name: 'James Ouma',
+        message: "The Aloe Gel saved my skin after a kitchen burn! Applied it immediately and had zero blisters. Now it's my family's first aid staple."
     },
     {
         id: 3,
         img: defaultImageURL, 
-        name: 'Dr. James Ouma',
-        profession: 'Dermatologist',
-        message: "I recommend AloeForA’s aloe gel to my patients. It’s perfect for sensitive skin, helps with burns, and speeds up healing naturally."
+        name: 'Catherine M.',
+        message: "After trying the Hair Conditioner, I'll never go back to regular brands! My chemically-treated hair feels natural and soft again after just 2 weeks."
     },
     {
         id: 4,
         img: defaultImageURL, 
-        name: 'Catherine Muthoni',
-        profession: 'Salon Owner',
-        message: "AloeForA’s hair conditioner is a must-have! My clients’ hair is shinier, healthier, and stronger with every use. Highly recommended!"
+        name: 'Dan Mwangi',
+        message: "The Aloe Soap cleared my teenage son's acne better than expensive treatments. We buy 3 bars every month now!"
     },
     {
         id: 5,
         img: defaultImageURL, 
-        name: 'Daniel Mwangi',
-        profession: 'Organic Store Owner',
-        message: "Our customers love AloeForA’s aloe-based soaps. They’re natural, antibacterial, and perfect for daily use."
-    },
-    {
-        id: 6,
-        img: defaultImageURL, 
-        name: 'Lucy Wambui',
-        profession: 'Wellness Coach',
-        message: "AloeForA’s aloe juice has boosted my digestion and energy levels. It’s a powerful detox that I recommend to my clients."
+        name: 'Lucy W.',
+        message: "I drink the Aloe Juice every morning. My chronic stomach issues improved within 10 days - no more antacids needed!"
     }
 ];
