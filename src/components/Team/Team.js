@@ -15,19 +15,18 @@ const teamMembers = [
     bio: 'Doris Obondo is a visionary entrepreneur with a Diploma in Business Administration from Africa Nazarene University. Recognized as the Most Innovative Student in 2022, she is the Founder and CEO of Flora Products, specializing in natural skincare and hygiene solutions. In 2020, she launched a natural liquid hand wash to address skin irritation from conventional soaps. A Certified Pursuit Entrepreneur, Doris refines her expertise in business strategy and product development while driving innovation and sustainability in the beauty and hygiene industry.',
     socialLinks: {
       twitter: '',
-      linkedIn: '',
+      linkedIn: 'https://www.linkedin.com/in/doris-akoth-86296a63/',
       facebook: '',
+      instagram: 'https://www.instagram.com/dorisobondo/',
     },
-},
-
-
+  },
   {
     id: 2,
     name: 'Nelson Tommogo',
     role: 'IT Head',
     image: teamMember2,
     expertise: 'Software Engineering, Mobile and Web Engineering',
-    bio: 'As the IT Specialist and at Aloe Flora Products Limited, I drive technological innovation and process optimization to enhance product quality and efficiency while leading a multidisciplinary team to develop and implement strategies that align with the company’s goals.',
+    bio: 'As the IT Specialist and at Aloe Flora Products Limited, I drive technological innovation and process optimization to enhance product quality and efficiency while leading a multidisciplinary team to develop and implement strategies that align with the company\'s goals.',
     socialLinks: {
       twitter: 'https://x.com/nelson_tommogo',
       linkedIn: 'https://www.linkedin.com/in/nelson-tommogo/',
