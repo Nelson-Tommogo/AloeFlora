@@ -41,7 +41,7 @@ const products = [
     name: 'Aloe Shower Gel', 
     description: '500ml moisturizing wash - Aloe & vitamin E - Maintains moisture barrier',
     image: showergel, 
-    price: 350, 
+    price: 600, 
     category: 'Skincare & Bodycare' 
   },
   { 
