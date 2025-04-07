@@ -3,7 +3,7 @@ import Footer from "../Footer";
 import teamMember1 from '../../assets/home/doris.jpg'; 
 import teamMember2 from '../../assets/home/profile.jpeg'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faLinkedin, faGithub, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faLinkedin, faGithub, faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 
 const teamMembers = [
   {
@@ -14,10 +14,11 @@ const teamMembers = [
     expertise: 'Entrepreneurship, Business Strategy, and Product Development.',
     bio: 'Doris Obondo is a visionary entrepreneur with a Diploma in Business Administration from Africa Nazarene University. Recognized as the Most Innovative Student in 2022, she is the Founder and CEO of Flora Products, specializing in natural skincare and hygiene solutions. In 2020, she launched a natural liquid hand wash to address skin irritation from conventional soaps. A Certified Pursuit Entrepreneur, Doris refines her expertise in business strategy and product development while driving innovation and sustainability in the beauty and hygiene industry.',
     socialLinks: {
-      twitter: '',
+      twitter: 'https://x.com/DorisObondo',
       linkedIn: 'https://www.linkedin.com/in/doris-akoth-86296a63/',
-      facebook: '',
+      facebook: 'https://www.facebook.com/doris.obondo.3',
       instagram: 'https://www.instagram.com/dorisobondo/',
+      tiktok: 'https://www.tiktok.com/@dorisobondo',
     },
   },
   {
@@ -79,6 +80,11 @@ const Team = () => {
                 {member.socialLinks.instagram && (
                   <a href={member.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                )}
+                {member.socialLinks.tiktok && (
+                  <a href={member.socialLinks.tiktok} target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faTiktok} />
                   </a>
                 )}
               </div>

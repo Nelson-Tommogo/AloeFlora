@@ -82,9 +82,6 @@ const Shop = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [locationInput, setLocation] = useState('');
-  const [useLiveLocation, setUseLiveLocation] = useState(false);
-  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
   const [isValidPhone, setIsValidPhone] = useState(true);
   const [isLoadingPayment, setIsLoadingPayment] = useState(false);
   const [message, setMessage] = useState('');
@@ -202,29 +199,6 @@ const Shop = () => {
         }
     } else {
         console.log('Invalid phone number');
-    }
-  };
-
-  const handleUseLiveLocation = () => {
-    if (!useLiveLocation) {
-      setIsLoadingLocation(true);
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            setLocation(`Lat: ${latitude}, Long: ${longitude}`);
-            setUseLiveLocation(true);
-            setIsLoadingLocation(false);
-          },
-          (error) => {
-            console.error('Error getting location:', error);
-            setIsLoadingLocation(false);
-          }
-        );
-      } else {
-        alert('Geolocation is not supported by this browser.');
-        setIsLoadingLocation(false);
-      }
     }
   };
 
@@ -358,26 +332,6 @@ const Shop = () => {
                     {!isValidPhone && <p className="error-message">Please enter a valid M-Pesa number (e.g., 07XXXXXXXX).</p>}
                   </div>
 
-                  <div className="form-group">
-                    <label htmlFor="location">Delivery Location</label>
-                    <input
-                      type="text"
-                      id="location"
-                      value={locationInput}
-                      onChange={(e) => setLocation(e.target.value)}
-                      placeholder="Enter your location or use live location"
-                      disabled={useLiveLocation}
-                      required={!useLiveLocation} />
-                  </div>
-
-                  <button
-                    type="button"
-                    className={`live-location-btn ${useLiveLocation ? 'active' : ''}`}
-                    onClick={handleUseLiveLocation}
-                    disabled={isLoadingLocation}>
-                    {isLoadingLocation ? 'Getting Location...' : (useLiveLocation ? 'Using Live Location' : 'Use Live Location')}
-                  </button>
-
                   <button type="submit" className="submit-payment-btn" disabled={isLoadingPayment}>
                     {isLoadingPayment ? 'Processing...' : 'Submit Payment'}
                   </button>
@@ -391,7 +345,6 @@ const Shop = () => {
       <Footer />
     </>
   );
-  
 };
 
 export default Shop;

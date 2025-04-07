@@ -73,6 +73,18 @@ const NavbarMain = () => {
                 Shop Now
               </NavLink>
 
+              <NavLink
+                to="/blogs"
+                className={`${styles.nav_text} nav-link ${activeNav[3] ? styles.active : ""}`}
+                style={{ marginTop: "8px" }}
+                onClick={() => {
+                  handleActiveNav(3);
+                  closeNav();
+                }}
+              >
+                Blog
+              </NavLink>
+
               {/* More Insights Dropdown */}
               <NavDropdown
                 className={`nav-link ${styles.drop}`}

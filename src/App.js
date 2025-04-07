@@ -11,12 +11,11 @@ import { faUtensils, faTruck, faBoxOpen, faChalkboardTeacher, faStore } from '@f
 
 library.add(faUtensils, faTruck, faBoxOpen, faChalkboardTeacher, faStore);
 
-
 function App() {
   // Initialize AOS animations
   useEffect(() => {
     AOS.init({
-      enable:"mobile",
+      enable: "mobile",
       startEvent: 'DOMContentLoaded',
       offset: 70,
       duration: 800,
@@ -32,9 +31,14 @@ function App() {
         <NavbarMain />
         <div className="content">
           <Routes>
-            {routes.map((x) => (
-              <Route key={x.to} path={x.to} element={<x.component />} />
-            ))}
+            {routes.map((x) => {
+              console.log(x.component);  // Debugging to ensure it's a valid component
+              if (typeof x.component !== 'function') {
+                console.error(`Invalid component in route: ${x.to}`);
+                return null;  // Skip this route if the component is invalid
+              }
+              return <Route key={x.to} path={x.to} element={<x.component />} />;
+            })}
           </Routes>
         </div>
       </div>
