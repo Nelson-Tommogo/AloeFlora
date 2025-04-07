@@ -108,6 +108,20 @@ const NavbarMain = () => {
                     Contact Us
                   </NavLink>
                 </NavDropdown.Item>
+
+                <NavDropdown.Item>
+                  <NavLink
+                    to="/team"
+                    className={styles.dropdownText}
+                    onClick={() => {
+                      handleActiveNav(5);
+                      closeNav();
+                    }}
+                  >
+                    Team
+                  </NavLink>
+                </NavDropdown.Item>
+
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

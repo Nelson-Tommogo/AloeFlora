@@ -1,6 +1,6 @@
 import './Team.css';
 import Footer from "../Footer";
-import teamMember1 from '../../assets/home/charles.jpg'; 
+import teamMember1 from '../../assets/home/doris.jpg'; 
 import teamMember2 from '../../assets/home/profile.jpeg'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faLinkedin, faGithub, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -9,23 +9,25 @@ const teamMembers = [
   {
     id: 1,
     name: 'Doris Obondo',
-    role: 'Chief Executive Officer (CEO)',
+    role: 'Chief Executive Officer (CEO) and Founder',
     image: teamMember1,
-    expertise: 'Leadership, Business Strategy, and Product Development.',
-    bio: 'With over 4 years of experience in the food and engineering industries, I am the founder and CEO of MEBIUT Ltd, where I develop high-quality, locally inspired sauces like Kenyan Taste, leveraging my engineering background to optimize production processes while innovating and honoring Kenya’s culinary heritage.',
+    expertise: 'Entrepreneurship, Business Strategy, and Product Development.',
+    bio: 'Doris Obondo is a visionary entrepreneur with a Diploma in Business Administration from Africa Nazarene University. Recognized as the Most Innovative Student in 2022, she is the Founder and CEO of Flora Products, specializing in natural skincare and hygiene solutions. In 2020, she launched a natural liquid hand wash to address skin irritation from conventional soaps. A Certified Pursuit Entrepreneur, Doris refines her expertise in business strategy and product development while driving innovation and sustainability in the beauty and hygiene industry.',
     socialLinks: {
       twitter: '',
       linkedIn: '',
       facebook: '',
     },
-  },
+},
+
+
   {
     id: 2,
     name: 'Nelson Tommogo',
-    role: 'Chief Technology Officer (CTO)',
+    role: 'IT Head',
     image: teamMember2,
     expertise: 'Software Engineering, Mobile and Web Engineering',
-    bio: 'As the CTO of MEBIUT, I drive technological innovation and process optimization to enhance product quality and efficiency while leading a multidisciplinary team to develop and implement strategies that align with the company’s goals.',
+    bio: 'As the IT Specialist and at Aloe Flora Products Limited, I drive technological innovation and process optimization to enhance product quality and efficiency while leading a multidisciplinary team to develop and implement strategies that align with the company’s goals.',
     socialLinks: {
       twitter: 'https://x.com/nelson_tommogo',
       linkedIn: 'https://www.linkedin.com/in/nelson-tommogo/',

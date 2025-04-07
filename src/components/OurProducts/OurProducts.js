@@ -43,7 +43,7 @@ const OurProducts = () => {
                 {
                     data.map((x) => (
                         <div key={x.id} className={`col-md-4 col-sm-6 mt-4`} data-aos='fade'>
-                            <Link to="/OurShop" style={{ textDecoration: "none" }}>
+                            <Link to="/shop" style={{ textDecoration: "none" }}>
                                 <div className={styles.img} style={{ backgroundImage: `url(${x.img})` }}>
                                     <p className={styles.imgTitle}>{x.title}</p>
                                 </div>

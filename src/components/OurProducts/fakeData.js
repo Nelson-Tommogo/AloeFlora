@@ -34,13 +34,13 @@ const fakeData = [
         category: 'cleaning'
     },
     {
-        id: 8,
+        id: 5,
         title: 'Handwash Soap',
         img: product8,
         category: 'cleaning'
     },
     {
-        id: 9,
+        id: 6,
         title: 'Toilet Cleaner',
         img: toiletcleaner,
         category: 'cleaning'
