@@ -1,10 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import './blog.css';
-import { blogs as initialBlogs } from './data'; 
 import Footer from "../Footer";
 
 const Blog = () => {
-  const [blogs, setBlogs] = useState(initialBlogs);
+  const [blogs, setBlogs] = useState([
+    {
+      id: 1,
+      title: 'The Power of Aloe Vera in Skincare',
+      content: 'Aloe vera is packed with vitamins, antioxidants, and anti-inflammatory properties that help soothe, hydrate, and heal the skin. Discover why it\'s the star ingredient in all our Aloe Flora products.',
+      author: 'Doris Obondo',
+      date: 'March 15, 2025',
+      category: 'Skincare',
+      image: 'https://images.unsplash.com/photo-1612197599273-5ba0ea084203?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80',
+      likes: 0,
+    },
+    {
+      id: 2,
+      title: 'Sustainable Packaging: Why It Matters',
+      content: 'At Aloe Flora, we are committed to eco-friendly packaging to reduce waste and protect the environment. Learn how sustainable packaging can make a big difference.',
+      author: 'Ann Karimi',
+      date: 'February 20, 2025',
+      category: 'Sustainability',
+      image: 'https://images.unsplash.com/photo-1614728894747-0ef87d0c1316?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80',
+      likes: 0,
+    },
+    {
+      id: 3,
+      title: 'Benefits of Natural Liquid Soaps',
+      content: 'Unlike synthetic soaps, natural liquid soaps are gentle on the skin and free from harsh chemicals. Explore the benefits of Aloe Flora\'s multipurpose liquid soaps for your home and body.',
+      author: 'Nelson Tommogo',
+      date: 'January 10, 2025',
+      category: 'Natural Products',
+      image: 'https://images.unsplash.com/photo-1606761568499-6c3e24642b7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80',
+      likes: 0,
+    },
+    {
+      id: 4,
+      title: 'Building a Healthier Home with Aloe-Based Cleaners',
+      content: 'Clean homes shouldn\'t come at the expense of your health. Learn how Aloe Flora\'s aloe-based toilet cleaners and multipurpose soaps are safe, effective, and eco-friendly.',
+      author: 'Lisa Ray',
+      date: 'December 5, 2024',
+      category: 'Home & Hygiene',
+      image: 'https://images.unsplash.com/photo-1607082350920-3a6d464c4d76?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80',
+      likes: 0,
+    },
+    {
+      id: 5,
+      title: 'Why Aloe-Based Hair Products Are a Game Changer',
+      content: 'Hair shampoos and conditioners with aloe vera deeply nourish your scalp and strengthen your hair naturally. Find out how Aloe Flora is redefining haircare routines.',
+      author: 'Robert Moore',
+      date: 'November 18, 2024',
+      category: 'Haircare',
+      image: 'https://images.unsplash.com/photo-1570172619642-062aa1e2f4a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80',
+      likes: 0,
+    },
+  ]);
+  
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 3;
   const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -95,22 +146,34 @@ const Blog = () => {
 
       <div className="blog-list">
         {currentBlogs.map((blog) => (
-          <div key={blog.id} className="blog-post">
-            <img src={blog.image} alt={blog.title} className="blog-image" />
-            <h2>{blog.title}</h2>
-            <p>{blog.content.substring(0, 120)}... <a href="#">Read More</a></p>
-            <div className="blog-info">
-              <span>By {blog.author}</span> | <span>{blog.date}</span> | <span>{blog.category}</span>
+          <article key={blog.id} className="blog-post">
+            <div className="blog-image-container">
+              <img src={blog.image} alt={blog.title} className="blog-image" />
             </div>
-            <div className="blog-actions">
-              <button onClick={() => handleLike(blog.id)}>
-                <i className="fas fa-thumbs-up"></i> {blog.likes} Likes
-              </button>
-              <button onClick={() => openShareModal(blog)}>
-                <i className="fas fa-share-alt"></i> Share
-              </button>
+            <div className="blog-content">
+              <h2>{blog.title}</h2>
+              <p className="blog-excerpt">{blog.content.substring(0, 120)}...</p>
+              <div className="blog-info">
+                <span>By {blog.author}</span>
+                <span>{blog.date}</span>
+                <span className="blog-category">{blog.category}</span>
+              </div>
+              <div className="blog-actions">
+                <button 
+                  className="like-btn"
+                  onClick={() => handleLike(blog.id)}
+                >
+                  <i className="fas fa-thumbs-up"></i> {blog.likes} Likes
+                </button>
+                <button 
+                  className="share-btn"
+                  onClick={() => openShareModal(blog)}
+                >
+                  <i className="fas fa-share-alt"></i> Share
+                </button>
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
@@ -130,10 +193,18 @@ const Blog = () => {
         <div className="share-modal">
           <div className="share-modal-content">
             <h2>Share this blog</h2>
-            <button onClick={() => shareOnPlatform('twitter')}>Share on Twitter</button>
-            <button onClick={() => shareOnPlatform('linkedin')}>Share on LinkedIn</button>
-            <button onClick={() => shareOnPlatform('facebook')}>Share on Facebook</button>
-            <button onClick={closeShareModal}>Close</button>
+            <button onClick={() => shareOnPlatform('twitter')}>
+              <i className="fab fa-twitter"></i> Twitter
+            </button>
+            <button onClick={() => shareOnPlatform('linkedin')}>
+              <i className="fab fa-linkedin"></i> LinkedIn
+            </button>
+            <button onClick={() => shareOnPlatform('facebook')}>
+              <i className="fab fa-facebook"></i> Facebook
+            </button>
+            <button className="close-btn" onClick={closeShareModal}>
+              Close
+            </button>
           </div>
         </div>
       )}

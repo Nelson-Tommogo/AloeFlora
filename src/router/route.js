@@ -4,7 +4,6 @@ import AboutUs from '../views/aboutUs';
 import Payment from '../components/Shop/Payment';
 import Team from "../components/Team/Team";
 import Shop from "../components/Shop/Shop";
-import blogs from "../components/Blog/data";
 import Blog from "../components/Blog/blog";
 
 

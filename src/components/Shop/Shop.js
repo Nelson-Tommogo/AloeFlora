@@ -41,7 +41,7 @@ const products = [
     name: 'Aloe Shower Gel', 
     description: '500ml moisturizing wash - Aloe & vitamin E - Maintains moisture barrier',
     image: showergel, 
-    price: 600, 
+    price: 609, 
     category: 'Skincare & Bodycare' 
   },
   { 
@@ -77,6 +77,7 @@ const products = [
     category: 'Cleaning & Hygiene' 
   },
 ];
+
 const Shop = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -169,7 +170,7 @@ const Shop = () => {
     setIsValidPhone(valid);
 
     if (valid) {
-        const confirmation = window.confirm(`Confirm purchase of ${totalQuantity}Aloe Flora Products worth Ksh ${totalAmount}?`);
+        const confirmation = window.confirm(`Confirm purchase of ${totalQuantity} Aloe Flora Products worth Ksh ${totalAmount}?`);
         if (!confirmation) return;
 
         setIsLoadingPayment(true);
@@ -204,60 +205,42 @@ const Shop = () => {
 
   return (
     <>
-      <div className="our-shop-container">
+      <div className="shop-page-container">
         <header className="shop-header">
           <h1>Our Shop</h1>
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={handleSearch}
-            />
-            <FaSearch className="search-icon" size={20} />
-          </div>
-          <div className="filter-controls">
-            <select
-              value={filterCategory}
-              onChange={(e) => setFilterCategory(e.target.value)}
-              style={{
-                padding: '8px 12px',
-                borderRadius: '20px',
-                border: '2px solid #4CAF50',
-                margin: '0 10px',
-                backgroundColor: '#f8f8f8',
-                color: '#333',
-                fontSize: '14px',
-                cursor: 'pointer',
-                outline: 'none'
-              }}
-            >
-              <option value="">All Categories</option>
-              <option value="Skincare & Bodycare">Skincare & Bodycare</option>
-              <option value="Cleaning & Hygiene">Cleaning & Hygiene</option>
-            </select>
+          <div className="shop-controls">
+            <div className="search-bar">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={handleSearch}
+              />
+              <FaSearch className="search-icon" size={20} />
+            </div>
+            <div className="filter-controls">
+              <select
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
+                className="filter-select"
+              >
+                <option value="">All Categories</option>
+                <option value="Skincare & Bodycare">Skincare & Bodycare</option>
+                <option value="Cleaning & Hygiene">Cleaning & Hygiene</option>
+              </select>
 
-            <select 
-              value={sortCriteria} 
-              onChange={handleSortChange}
-              style={{
-                padding: '8px 12px',
-                borderRadius: '20px',
-                border: '2px solid #4CAF50',
-                margin: '0 10px',
-                backgroundColor: '#f8f8f8',
-                color: '#333',
-                fontSize: '14px',
-                cursor: 'pointer',
-                outline: 'none'
-              }}
-            >
-              <option value="">Sort by</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="name-asc">Name: A to Z</option>
-              <option value="name-desc">Name: Z to A</option>
-            </select>
+              <select 
+                value={sortCriteria} 
+                onChange={handleSortChange}
+                className="filter-select"
+              >
+                <option value="">Sort by</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="name-desc">Name: Z to A</option>
+              </select>
+            </div>
           </div>
           <div className="cart-icon" onClick={toggleCart}>
             <FaShoppingCart size={30} />
@@ -265,80 +248,124 @@ const Shop = () => {
           </div>
         </header>
 
-        <div className="product-grid">
-          {sortedAndFilteredProducts.length > 0 ? (
-            sortedAndFilteredProducts.map((product) => (
-              <div key={product.id} className="product-card">
-                <img src={product.image} alt={product.name} />
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <p>Ksh {product.price}</p>
-                <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
-                  Add to Basket
-                </button>
+        <div className="products-container">
+          <div className="product-grid">
+            {sortedAndFilteredProducts.length > 0 ? (
+              sortedAndFilteredProducts.map((product) => (
+                <div key={product.id} className="product-card">
+                  <div className="product-image-container">
+                    <img src={product.image} alt={product.name} className="product-image" />
+                  </div>
+                  <div className="product-info">
+                    <h3 className="product-name">{product.name}</h3>
+                    <p className="product-description">{product.description}</p>
+                    <p className="product-price">Ksh {product.price}</p>
+                    <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+                      Add to Basket
+                    </button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="no-products-message">
+                <p>No products found matching your search.</p>
               </div>
-            ))
-          ) : (
-            <p>No products found</p>
-          )}
+            )}
+          </div>
         </div>
 
         {isCartOpen && (
-          <div className="cart-dropdown">
+          <div className={`cart-dropdown ${isCartOpen ? 'show' : ''}`}>
             <div className="cart-header">
-              <h3>Your Cart</h3>
+              <h3>Your Cart ({totalQuantity})</h3>
               <FaTimes className="close-cart-btn" onClick={toggleCart} size={20} />
             </div>
-            {cartItems.length > 0 ? (
-              <ul>
-                {cartItems.map((item) => (
-                  <li key={item.id}>
-                    <div className="cart-item">
-                      <img src={item.image} alt={item.name} className="cart-item-img" />
-                      <div className="cart-item-details">
-                        <h4>{item.name}</h4>
-                        <div className="cart-item-controls">
-                          <button className="quantity-btn" onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
-                          <span>{item.quantity}</span>
-                          <button className="quantity-btn" onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
-                          <button className="remove-item-btn" onClick={() => removeFromCart(item)}>
-                            <FaTrashAlt /> Remove
-                          </button>
+            
+            <div className="cart-content">
+              {cartItems.length > 0 ? (
+                <>
+                  <ul className="cart-items-list">
+                    {cartItems.map((item) => (
+                      <li key={item.id} className="cart-item">
+                        <div className="cart-item-container">
+                          <img src={item.image} alt={item.name} className="cart-item-img" />
+                          <div className="cart-item-details">
+                            <h4>{item.name}</h4>
+                            <p className="item-price">Ksh {item.price}</p>
+                            <div className="cart-item-controls">
+                              <button className="quantity-btn" onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
+                              <span className="quantity">{item.quantity}</span>
+                              <button className="quantity-btn" onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
+                              <button className="remove-item-btn" onClick={() => removeFromCart(item)}>
+                                <FaTrashAlt /> Remove
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="cart-summary">
+                    <div className="summary-row">
+                      <span>Total Quantity:</span>
+                      <span>{totalQuantity}</span>
                     </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>Your cart is empty</p>
-            )}
+                    <div className="summary-row">
+                      <span>Total Amount:</span>
+                      <span>Ksh {totalAmount}</span>
+                    </div>
+                    
+                    <form onSubmit={handlePaymentSubmit} className="payment-form">
+                      <div className="form-group">
+                        <label htmlFor="phoneNumber">M-Pesa Phone Number</label>
+                        <input
+                          type="tel"
+                          id="phoneNumber"
+                          value={phoneNumber}
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          placeholder="e.g. 0712345678"
+                          required
+                          className={!isValidPhone ? 'error' : ''}
+                        />
+                        {!isValidPhone && (
+                          <p className="error-message">
+                            Please enter a valid M-Pesa number (e.g., 07XXXXXXXX)
+                          </p>
+                        )}
+                      </div>
 
-            {cartItems.length > 0 && (
-              <div className="cart-summary">
-                <p>Total Quantity: {totalQuantity}</p>
-                <p>Total Amount: Ksh {totalAmount}</p>
-                <form onSubmit={handlePaymentSubmit} className="payment-form">
-                  <div className="form-group">
-                    <label htmlFor="phoneNumber">M-Pesa Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phoneNumber"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      placeholder="Enter your phone number"
-                      required
-                      className={!isValidPhone ? 'error' : ''} />
-                    {!isValidPhone && <p className="error-message">Please enter a valid M-Pesa number (e.g., 07XXXXXXXX).</p>}
+                      <button 
+                        type="submit" 
+                        className="submit-payment-btn" 
+                        disabled={isLoadingPayment}
+                      >
+                        {isLoadingPayment ? (
+                          <>
+                            <span className="spinner"></span> Processing...
+                          </>
+                        ) : (
+                          'Pay via M-Pesa'
+                        )}
+                      </button>
+                    </form>
+                    
+                    {message && (
+                      <div className={`payment-message ${message.includes('success') ? 'success' : 'error'}`}>
+                        {message}
+                      </div>
+                    )}
                   </div>
-
-                  <button type="submit" className="submit-payment-btn" disabled={isLoadingPayment}>
-                    {isLoadingPayment ? 'Processing...' : 'Submit Payment'}
+                </>
+              ) : (
+                <div className="empty-cart-message">
+                  <p>Your cart is empty</p>
+                  <button className="continue-shopping-btn" onClick={toggleCart}>
+                    Continue Shopping
                   </button>
-                </form>
-                {message && <p className="payment-message">{message}</p>}
-              </div>
-            )}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

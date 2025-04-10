@@ -72,7 +72,7 @@ const AboutUsHome = () => {
                           { 
                             img: showergel, 
                             title: "Shower Gel", 
-                            price: "Ksh 350",
+                            price: "Ksh 609",
                             description: "Moisturizing body wash - Vitamin E enriched - Maintains skin's natural pH"
                           }
                 
