@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Shop.css';
 import { FaSearch, FaShoppingCart, FaTrashAlt, FaTimes } from 'react-icons/fa';
 import Footer from "../Footer";
@@ -88,7 +88,27 @@ const Shop = () => {
   const [message, setMessage] = useState('');
   const [sortCriteria, setSortCriteria] = useState('');
   const [filterCategory, setFilterCategory] = useState('');
+  const [paymentStatus, setPaymentStatus] = useState(null); 
+  const [checkoutRequestId, setCheckoutRequestId] = useState(null);
+  const [pollingInterval, setPollingInterval] = useState(null);
 
+  // Helper function to format phone numbers
+  const formatPhoneNumber = (number) => {
+    const cleaned = number.replace(/\D/g, '');
+    if (cleaned.startsWith('0') && cleaned.length === 10) {
+      return `254${cleaned.substring(1)}`;
+    }
+    return cleaned;
+  };
+
+  // Validate phone number format
+  const validatePhoneNumber = (number) => {
+    const cleanedNumber = number.replace(/\s+/g, '');
+    const phoneRegex = /^(07\d{8}|01\d{8}|254\d{9})$/; 
+    return phoneRegex.test(cleanedNumber);
+  };
+
+  // Add to cart function
   const addToCart = (product) => {
     const existingProduct = cartItems.find(item => item.id === product.id);
     if (existingProduct) {
@@ -102,10 +122,12 @@ const Shop = () => {
     }
   };
 
+  // Remove from cart function
   const removeFromCart = (product) => {
     setCartItems(cartItems.filter(item => item.id !== product.id));
   };
 
+  // Update quantity function
   const updateQuantity = (product, newQuantity) => {
     if (newQuantity <= 0) {
       removeFromCart(product);
@@ -118,14 +140,17 @@ const Shop = () => {
     }
   };
 
+  // Handle search input
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  // Handle sort change
   const handleSortChange = (e) => {
     setSortCriteria(e.target.value);
   };
 
+  // Apply filters and sorting to products
   const applyFilterAndSort = (products) => {
     let filteredProducts = products.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -149,59 +174,184 @@ const Shop = () => {
     return filteredProducts;
   };
 
-  const sortedAndFilteredProducts = applyFilterAndSort(products);
+  // Start polling for payment status
+  const startPollingPaymentStatus = (requestId) => {
+    // Clear any existing interval
+    if (pollingInterval) clearInterval(pollingInterval);
 
-  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const totalAmount = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    // Start new polling
+    const interval = setInterval(async () => {
+      try {
+        const statusResponse = await fetch(
+          `https://aloeflora-lg66.onrender.com/api/stkquery?checkoutRequestId=${requestId}`
+        );
+        const statusData = await statusResponse.json();
 
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const validatePhoneNumber = (number) => {
-    const cleanedNumber = number.replace(/\s+/g, '');
-    const phoneRegex = /^(07\d{8}|01\d{8}|254\d{9})$/; 
-    return phoneRegex.test(cleanedNumber);
-  };
-  
-  const handlePaymentSubmit = async (e) => {
-    e.preventDefault();
-    const valid = validatePhoneNumber(phoneNumber);
-    setIsValidPhone(valid);
-
-    if (valid) {
-        const confirmation = window.confirm(`Confirm purchase of ${totalQuantity} Aloe Flora Products worth Ksh ${totalAmount}?`);
-        if (!confirmation) return;
-
-        setIsLoadingPayment(true);
-        setMessage('');
-
-        try {
-            const response = await fetch('https://aloeflora-lg66.onrender.com/api/stk', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ amount: totalAmount, phoneNumber }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                setMessage(data.message);
-            } else {
-                setMessage(data.error || 'Failed to send payment request. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            setMessage('An error occurred. Please try again.');
-        } finally {
-            setIsLoadingPayment(false);
+        if (statusData.status === 'success') {
+          // Payment successful
+          clearInterval(interval);
+          setPaymentStatus('success');
+          setMessage('Payment successful! Thank you for your purchase.');
+          setIsLoadingPayment(false);
+          saveTransaction(requestId);
+          setCartItems([]); // Clear cart on success
+        } else if (statusData.status === 'failed' || statusData.status === 'cancelled') {
+          // Payment failed
+          clearInterval(interval);
+          setPaymentStatus(statusData.status);
+          setMessage(
+            statusData.status === 'cancelled'
+              ? 'Payment was cancelled. Please try again if you wish to complete your purchase.'
+              : 'Payment failed. Please check your M-Pesa balance and try again.'
+          );
+          setIsLoadingPayment(false);
         }
-    } else {
-        console.log('Invalid phone number');
+        // If still pending, do nothing and wait for next poll
+      } catch (error) {
+        console.error('Status check error:', error);
+        // Don't stop polling on temporary errors
+      }
+    }, 5000); // Check every 5 seconds
+
+    setPollingInterval(interval);
+
+    // Timeout after 5 minutes (300 seconds)
+    setTimeout(() => {
+      clearInterval(interval);
+      if (paymentStatus === 'pending') {
+        setPaymentStatus('timeout');
+        setMessage('Payment request timed out. Please try again.');
+        setIsLoadingPayment(false);
+      }
+    }, 300000);
+  };
+
+  // Save transaction to database
+  const saveTransaction = async (requestId) => {
+    try {
+      const transactionData = {
+        phoneNumber: formatPhoneNumber(phoneNumber),
+        amount: totalAmount,
+        items: cartItems.map(item => ({
+          productId: item.id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price
+        })),
+        checkoutRequestId: requestId,
+        status: 'completed'
+      };
+
+      await fetch('https://aloeflora-lg66.onrender.com/api/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(transactionData),
+      });
+    } catch (error) {
+      console.error('Failed to save transaction:', error);
     }
   };
+
+  const handlePaymentSubmit = async (e) => {
+  e.preventDefault();
+  
+  // Validate network connection
+  if (!navigator.onLine) {
+    setMessage('You appear to be offline. Please check your connection.');
+    return;
+  }
+
+  const valid = validatePhoneNumber(phoneNumber);
+  setIsValidPhone(valid);
+
+  if (!valid) {
+    setMessage('Please enter a valid M-Pesa number (e.g., 07XXXXXXXX)');
+    return;
+  }
+
+  const confirmation = window.confirm(
+    `Confirm purchase of ${totalQuantity} items worth Ksh ${totalAmount}?`
+  );
+  if (!confirmation) return;
+
+  setIsLoadingPayment(true);
+  setMessage('');
+  setPaymentStatus('pending');
+
+  try {
+    // Make the payment request
+    const stkResponse = await fetch('https://aloeflora-lg66.onrender.com/api/stkpush', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ 
+        amount: totalAmount, 
+        phoneNumber: formatPhoneNumber(phoneNumber) 
+      })
+    });
+
+    // Handle response
+    if (!stkResponse.ok) {
+      let errorMsg = 'Payment failed';
+      try {
+        const errorData = await stkResponse.json();
+        errorMsg = errorData.message || errorMsg;
+      } catch (e) {
+        console.log('Could not parse error response');
+      }
+      throw new Error(errorMsg);
+    }
+
+    const stkData = await stkResponse.json();
+    
+    if (!stkData.checkoutRequestID) {
+      throw new Error('Invalid response from payment gateway');
+    }
+
+    setCheckoutRequestId(stkData.checkoutRequestID);
+    setMessage('Payment request sent. Please check your phone.');
+    startPollingPaymentStatus(stkData.checkoutRequestID);
+
+  } catch (error) {
+    console.error('Payment Error:', error);
+    setPaymentStatus('failed');
+    
+    // Simplified error handling
+    if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+      setMessage('Network error. Please check your internet connection and try again.');
+    } else {
+      setMessage(error.message || 'Payment failed. Please try again.');
+    }
+    
+    setIsLoadingPayment(false);
+  }
+};
+
+  // Toggle cart visibility
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+    // Reset payment status when closing cart
+    if (isCartOpen) {
+      setPaymentStatus(null);
+      setMessage('');
+    }
+  };
+
+  // Clean up polling interval when component unmounts
+  useEffect(() => {
+    return () => {
+      if (pollingInterval) clearInterval(pollingInterval);
+    };
+  }, [pollingInterval]);
+
+  // Calculate totals
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalAmount = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  const sortedAndFilteredProducts = applyFilterAndSort(products);
 
   return (
     <>
@@ -260,7 +410,11 @@ const Shop = () => {
                     <h3 className="product-name">{product.name}</h3>
                     <p className="product-description">{product.description}</p>
                     <p className="product-price">Ksh {product.price}</p>
-                    <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+                    <button 
+                      className="add-to-cart-btn" 
+                      onClick={() => addToCart(product)}
+                      disabled={paymentStatus === 'pending'}
+                    >
                       Add to Basket
                     </button>
                   </div>
@@ -293,10 +447,26 @@ const Shop = () => {
                             <h4>{item.name}</h4>
                             <p className="item-price">Ksh {item.price}</p>
                             <div className="cart-item-controls">
-                              <button className="quantity-btn" onClick={() => updateQuantity(item, item.quantity - 1)}>-</button>
+                              <button 
+                                className="quantity-btn" 
+                                onClick={() => updateQuantity(item, item.quantity - 1)}
+                                disabled={paymentStatus === 'pending'}
+                              >
+                                -
+                              </button>
                               <span className="quantity">{item.quantity}</span>
-                              <button className="quantity-btn" onClick={() => updateQuantity(item, item.quantity + 1)}>+</button>
-                              <button className="remove-item-btn" onClick={() => removeFromCart(item)}>
+                              <button 
+                                className="quantity-btn" 
+                                onClick={() => updateQuantity(item, item.quantity + 1)}
+                                disabled={paymentStatus === 'pending'}
+                              >
+                                +
+                              </button>
+                              <button 
+                                className="remove-item-btn" 
+                                onClick={() => removeFromCart(item)}
+                                disabled={paymentStatus === 'pending'}
+                              >
                                 <FaTrashAlt /> Remove
                               </button>
                             </div>
@@ -323,9 +493,13 @@ const Shop = () => {
                           type="tel"
                           id="phoneNumber"
                           value={phoneNumber}
-                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          onChange={(e) => {
+                            setPhoneNumber(e.target.value);
+                            setIsValidPhone(true);
+                          }}
                           placeholder="e.g. 0712345678"
                           required
+                          disabled={paymentStatus === 'pending'}
                           className={!isValidPhone ? 'error' : ''}
                         />
                         {!isValidPhone && (
@@ -335,26 +509,78 @@ const Shop = () => {
                         )}
                       </div>
 
-                      <button 
-                        type="submit" 
-                        className="submit-payment-btn" 
-                        disabled={isLoadingPayment}
-                      >
-                        {isLoadingPayment ? (
-                          <>
-                            <span className="spinner"></span> Processing...
-                          </>
-                        ) : (
-                          'Pay via M-Pesa'
-                        )}
-                      </button>
+                      {paymentStatus === null && (
+                        <button 
+                          type="submit" 
+                          className="submit-payment-btn" 
+                          disabled={isLoadingPayment || cartItems.length === 0}
+                        >
+                          {isLoadingPayment ? (
+                            <>
+                              <span className="spinner"></span> Processing...
+                            </>
+                          ) : (
+                            'Pay via M-Pesa'
+                          )}
+                        </button>
+                      )}
+
+                      {paymentStatus === 'pending' && (
+                        <div className="payment-pending">
+                          <div className="spinner"></div>
+                          <p>Waiting for payment confirmation...</p>
+                          <button 
+                            type="button" 
+                            className="cancel-payment-btn"
+                            onClick={() => {
+                              if (pollingInterval) clearInterval(pollingInterval);
+                              setPaymentStatus('cancelled');
+                              setMessage('Payment process cancelled.');
+                              setIsLoadingPayment(false);
+                            }}
+                          >
+                            Cancel Payment
+                          </button>
+                        </div>
+                      )}
+
+                      {message && (
+                        <div className={`payment-message ${
+                          paymentStatus === 'success' ? 'success' : 
+                          paymentStatus === 'pending' ? 'info' : 
+                          'error'
+                        }`}>
+                          {message}
+                          {paymentStatus === 'success' && (
+                            <div className="success-actions">
+                              <button 
+                                type="button" 
+                                className="continue-shopping-btn"
+                                onClick={() => {
+                                  setIsCartOpen(false);
+                                  setPaymentStatus(null);
+                                  setMessage('');
+                                }}
+                              >
+                                Continue Shopping
+                              </button>
+                            </div>
+                          )}
+                          {(paymentStatus === 'failed' || paymentStatus === 'cancelled' || paymentStatus === 'timeout') && (
+                            <button 
+                              type="button" 
+                              className="try-again-btn"
+                              onClick={() => {
+                                setPaymentStatus(null);
+                                setMessage('');
+                              }}
+                            >
+                              Try Again
+                            </button>
+                          )}
+                        </div>
+                      )}
                     </form>
-                    
-                    {message && (
-                      <div className={`payment-message ${message.includes('success') ? 'success' : 'error'}`}>
-                        {message}
-                      </div>
-                    )}
                   </div>
                 </>
               ) : (
