@@ -275,7 +275,6 @@ const Shop = () => {
             </div>
           </div>
         </header>
-
         <div className="products-container">
           <div className="product-grid">
             {sortedAndFilteredProducts.length > 0 ? (
