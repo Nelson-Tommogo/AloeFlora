@@ -53,7 +53,7 @@ const ContactUsForm = () => {
         <>
             <div className={`container ${styles.contain} overflow-hidden`}>
                 <p data-aos='fade-up' className={`${styles.heading} mx-auto`}>
-                    AloeFlora Limited We&apos;d Love to Hear From You
+                    AloeFlora Products Limited We&apos;d Love to Hear From You
                 </p>
 
                 <div className="row">
@@ -66,7 +66,7 @@ const ContactUsForm = () => {
                         <p className={styles.head}>Contact</p>
                         <p className={styles.content}>Mobile: 254 702 283637</p>
                         <p className={styles.content}>Phone: 254759735505</p>
-                        <p className={styles.content}>Email: info@aloyfloraproducts.com</p>
+                        <p className={styles.content}>Email: info@aloefloraproducts.com</p>
                     </div>
 
                     <div className="col-md-4" data-aos='fade-left' data-aos-offset='70'>
