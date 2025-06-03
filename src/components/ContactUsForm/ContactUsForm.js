@@ -59,7 +59,7 @@ const ContactUsForm = () => {
                 <div className="row">
                     <div className="col-md-4" data-aos='fade-right'>
                         <p className={styles.head}>Address</p>
-                        <p className={styles.content}>P.O BOX 00100, South C</p>
+                        <p className={styles.content}>P.O BOX 00100, Manyanja road</p>
                     </div>
 
                     <div className="col-md-4" data-aos='fade-up' data-aos-offset='100'>
